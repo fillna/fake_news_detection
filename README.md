@@ -18,7 +18,7 @@ Column 10-15: the source's score counts. <br />
 
 Description of [Liar Liar Dataset](https://arxiv.org/pdf/1705.00648.pdf): <br />
 =====================================================================
-Introduced by William Yang, Wang in his paper about “Liar, liar pants on fire.” This is a publicly available dataset made for fake new detection. Overall dataset is about 12.8k and manually labeled with the scrape content from POLITIFACT.com. We used this dataset and combined it with scraped new Politifact data from Jun to do a multiclass bias classification. We will also be using the combined dataset to do some textual analysis such as sentimental analysis. Such a dataset mainly contains a statement of the speaker, the name of the speaker, the context of this statement, and the label. Detail description below:
+Introduced by William Yang, Wang in his paper about “Liar, liar pants on fire.” This is a publicly available dataset made for fake new detection. Overall dataset is about 12.8k and manually labeled with the scrape content from POLITIFACT.com. We used this dataset and combined it with scraped new Politifact data from June to do a multiclass bias classification. We will also be using the combined dataset to do some textual analysis such as sentimental analysis. Such a dataset mainly contains a statement of the speaker, the name of the speaker, the context of this statement, and the label. Detail description below:
 
 Column 1: the ID of the statement ([ID].json).<br />
 Column 2: the label.<br />
