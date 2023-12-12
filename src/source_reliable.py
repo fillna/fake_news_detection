@@ -9,7 +9,7 @@ from nltk.stem import SnowballStemmer
 import numpy as np
 import pandas as pd
 from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 import warnings
 warnings.filterwarnings('ignore')
@@ -29,24 +29,22 @@ class SourceReliableModel():
         self.stopwords_set = set(stopwords.words('english'))
         self.stemmer = SnowballStemmer('english')
 
-        refernce_lst = list(pd.read_csv('../data/references.csv')['reference'])
-        self.countV = CountVectorizer(vocabulary=refernce_lst)
-
+        tfidfV = TfidfVectorizer(stop_words='english')
         self.pipeline = Pipeline([
-                ('srcCnt', self.countV),
+                ('tfidf', tfidfV),
                 ('log_clf', LogisticRegression(solver='liblinear', C=0.3))
                 ])
 
     def fit(self, data_train):
-        df = data_train[['references', 'src_true','src_mostly_true', 'src_half_true', 'src_mostly_false', 'src_false', 'src_pants_on_fire']]
-        X_train = df['references']
+        df = data_train[['headline', 'src_true','src_mostly_true', 'src_half_true', 'src_mostly_false', 'src_false', 'src_pants_on_fire']]
+        X_train = df['headline']
         y_train = np.argmax(df.iloc[:, 1:].values, axis = 1)
         
         self.pipeline.fit(X_train,y_train)
         print("Training Accuracy: %f" %(self.pipeline.score(X_train, y_train)))
 
     def predict(self, data:pd.DataFrame):
-        X = data['references']
+        X = data['headline']
         pred = self.pipeline.predict(X)
         predProb = self.pipeline.predict_proba(X)[:,1]
         return pred, predProb
