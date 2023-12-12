@@ -41,8 +41,8 @@ Description of [Liar Liar Plus Dataset](https://github.com/Tariq60/LIAR-PLUS): <
 =====================================================================
 Created by Alhindi, Petridis and Muresan. This dataset has evidence sentences extracted automatically from the full-text verdict report written by journalists in Politifact. 
 
-Column 1-14: same as the Liar Dataset
-**Column 15: the extracted justification**
+Column 1-14: same as the Liar Liar Dataset. <br />
+**Column 15: the extracted justification** <br />
 
 
 Notebook Usage:
