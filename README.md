@@ -13,7 +13,7 @@ How To Run:
 `source_reliable.py`: train / evaluate / output the source reliablility model. <br />
 
 
-Description of `politicfact_plus.csv`:
+Description of [`politicfact_plus.csv`](https://drive.google.com/file/d/1_QHccUDY2Mvg8RpHi5P38Zm-13AbkkNb/view?usp=drive_link):
 =====================================================================
 Initially scraped from POLITIFACT.com by Zhixing(Sean) Jiang, have the additional source record inforamtion added by Jun Linwu.
 
