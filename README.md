@@ -2,7 +2,7 @@
 
 Description of `politicfact_plus.csv`:
 =====================================================================
-Initially scraped by Zhixing(Sean) Jiang, have the additional source record inforamtion added by Jun Linwu.
+Initially scraped from POLITIFACT.com by Zhixing(Sean) Jiang, have the additional source record inforamtion added by Jun Linwu.
 
 Column 1: the source. <br />
 Column 2: the context, when or where. <br />
@@ -16,7 +16,7 @@ Column 9: the article text. <br />
 Column 10-15: the source's score counts. <br />
 
 
-Description of Liar Liar Dataset: <br />
+Description of [Liar Liar Dataset](https://arxiv.org/pdf/1705.00648.pdf): <br />
 =====================================================================
 Introduced by William Yang, Wang in his paper about “Liar, liar pants on fire.” This is a publicly available dataset made for fake new detection. Overall dataset is about 12.8k and manually labeled with the scrape content from POLITIFACT.com. We used this dataset and combined it with scraped new Politifact data from Jun to do a multiclass bias classification. We will also be using the combined dataset to do some textual analysis such as sentimental analysis. Such a dataset mainly contains a statement of the speaker, the name of the speaker, the context of this statement, and the label. Detail description below:
 
@@ -37,7 +37,7 @@ Columns 9-13: the total credit history count, including the current statement.<b
 Column 14: the context (venue / location of the speech or statement).<br />
 
 
-Description of Liar Liar Plus Dataset: <br />
+Description of [Liar Liar Plus Dataset](https://github.com/Tariq60/LIAR-PLUS): <br />
 =====================================================================
 Created by Alhindi, Petridis and Muresan. This dataset has evidence sentences extracted automatically from the full-text verdict report written by journalists in Politifact. 
 
@@ -47,6 +47,6 @@ Column 1-14: same as the Liar Dataset
 
 Notebook Usage:
 =====================================================================
-`scrape.ipynb`: to scrape politiFact.com. <br />
+`scrape.ipynb`: to scrape POLITIFACT.com. <br />
 `clickbait.ipynb` / `clickbait.py`: train / evaluate / output the clickbait model. <br />
 `sentiment.ipynb` / `sentiment.py`: train / evaluate / output the sentiment model. <br />
