@@ -23,7 +23,7 @@ class SpamModel():
         return " ".join(stems)
         
     def _encode_target_(self, input: str):
-        if input == 'true' or input == 'mostly-true' or input == 'half-true':
+        if input < 4:
                 return 'true'
         else:
                 return 'false'

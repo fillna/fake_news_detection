@@ -44,14 +44,14 @@ class SentimentModel():
 
     def fit(self, data_train):
         data_train['clean_headline'] = data_train['headline'].apply(self._cleaning_)
-        X_train = data_train['headline'].apply(self._cleaning_)
+        X_train = data_train['clean_headline'] + '. ' + data_train['context'].apply(self._cleaning_)
         y_train = data_train['clean_headline'].apply(self._compute_polarity_)
         
         self.pipeline.fit(X_train,y_train)
         print("Training Accuracy: %f" %(self.pipeline.score(X_train, y_train)))
 
     def predict(self, data:pd.DataFrame):
-        X = data['headline'].apply(self._cleaning_)
+        X = data['headline'].apply(self._cleaning_) + '. ' + data['context'].apply(self._cleaning_)
         pred = self.pipeline.predict(X)
         predProb = self.pipeline.predict_proba(X)[:,1]
         return pred, predProb

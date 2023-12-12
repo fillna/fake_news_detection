@@ -36,15 +36,15 @@ class SourceReliableModel():
                 ])
 
     def fit(self, data_train):
-        df = data_train[['headline', 'src_true','src_mostly_true', 'src_half_true', 'src_mostly_false', 'src_false', 'src_pants_on_fire']]
-        X_train = df['headline']
-        y_train = np.argmax(df.iloc[:, 1:].values, axis = 1)
+        df = data_train[['headline', 'context', 'src_true','src_mostly_true', 'src_half_true', 'src_mostly_false', 'src_false', 'src_pants_on_fire']]
+        X_train = df['headline'].apply(self._cleaning_) + '. ' + df['context'].apply(self._cleaning_)
+        y_train = np.argmax(df.iloc[:, 2:].values, axis = 1)
         
         self.pipeline.fit(X_train,y_train)
         print("Training Accuracy: %f" %(self.pipeline.score(X_train, y_train)))
 
     def predict(self, data:pd.DataFrame):
-        X = data['headline']
+        X = data['headline'].apply(self._cleaning_) + '. ' + data['context'].apply(self._cleaning_)
         pred = self.pipeline.predict(X)
         predProb = self.pipeline.predict_proba(X)[:,1]
         return pred, predProb
