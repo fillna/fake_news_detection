@@ -1,6 +1,19 @@
 # fake_news_detection
 
-Description of `politicfact_plus.csv`:
+How To Run:
+=====================================================================
+`final_model.ipynb`: train / evaluate / output final veracity model. <br />
+`bert_model.ipynb`: train / evaluate / output final BERT model. <br />
+
+
+`scrape.ipynb`: to scrape POLITIFACT.com. <br />
+`clickbait.py`: train / evaluate / output the clickbait model. <br />
+`sentiment.py`: train / evaluate / output the sentiment model. <br />
+`spam.py`: train / evaluate / output the spam model. <br />
+`source_reliable.py`: train / evaluate / output the source reliablility model. <br />
+
+
+Description of [`politicfact_plus.csv`](https://drive.google.com/file/d/1_QHccUDY2Mvg8RpHi5P38Zm-13AbkkNb/view?usp=drive_link):
 =====================================================================
 Initially scraped from POLITIFACT.com by Zhixing(Sean) Jiang, have the additional source record inforamtion added by Jun Linwu.
 
@@ -43,10 +56,3 @@ Created by Alhindi, Petridis and Muresan. This dataset has evidence sentences ex
 
 Column 1-14: same as the Liar Liar Dataset. <br />
 **Column 15: the extracted justification** <br />
-
-
-Notebook Usage:
-=====================================================================
-`scrape.ipynb`: to scrape POLITIFACT.com. <br />
-`clickbait.ipynb` / `clickbait.py`: train / evaluate / output the clickbait model. <br />
-`sentiment.ipynb` / `sentiment.py`: train / evaluate / output the sentiment model. <br />
