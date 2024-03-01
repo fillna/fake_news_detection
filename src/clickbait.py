@@ -1,14 +1,12 @@
-import numpy as np
 import pandas as pd
 import string
-import nltk
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import stopwords
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import classification_report
 
 class ClickbaitModel():
                 
@@ -122,6 +120,7 @@ class ClickbaitModel():
         
         print("Training Accuracy: %f" %(self.clf.score(X_train, y_train)))
         print("Testing Accuracy: %f" %(self.clf.score(X_test, y_test)))
+        print(classification_report(y_train, self.clf.predict(X_train)))
 
     def _embed_(self, df):
         df['has_quotation'] = df['headline'].apply(self._contain_quotation_)
@@ -144,7 +143,7 @@ class ClickbaitModel():
 
         return df[self.colNames]
         
-    def predict(self, data):
+    def predict(self, data:pd.DataFrame):
         X = self._embed_(data)
         pred = self.clf.predict(X)
         predProb = self.clf.predict_proba(X)[:,1]

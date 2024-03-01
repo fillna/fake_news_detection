@@ -1,6 +1,4 @@
-import string
 import re
-import nltk
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
@@ -10,9 +8,9 @@ import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report
 
 class SpamModel():
-
     def _cleaning_(self, raw_text: str):
         text = re.sub("[^a-zA-Z]", " ", raw_text)
         text =  text.lower()
@@ -21,7 +19,7 @@ class SpamModel():
         lem = [ WordNetLemmatizer().lemmatize(w) for w in words ]
         stems = [self.stemmer.stem(w) for w in lem ]
         return " ".join(stems)
-        
+    
     def _encode_target_(self, input: str):
         if input < 4:
                 return 'true'
@@ -49,7 +47,7 @@ class SpamModel():
         
         self.pipeline.fit(X_train,y_train)
         print("Training Accuracy: %f" %(self.pipeline.score(X_train, y_train)))
-
+        print(classification_report(y_train, self.pipeline.predict(X_train)))
 
     def predict(self, data:pd.DataFrame):
         X = data['headline'].apply(self._cleaning_)
